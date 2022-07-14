@@ -46,4 +46,12 @@ class QueryProcessorTest {
 		}
 	}
 
+	@Test
+	void testLargest() {
+		String actual = queryProcessor.process("08de9f90: which of the following numbers is the largest: 44, 15");
+		if (!actual.equals("44")) {
+			fail("Num not found!");
+		}
+	}
+
 }

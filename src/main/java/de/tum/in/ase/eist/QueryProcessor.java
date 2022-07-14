@@ -2,6 +2,8 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class QueryProcessor {
 
@@ -19,7 +21,15 @@ public class QueryProcessor {
             one = one.replace(" ", "");
             String[] split = one.split("plus");
             return String.valueOf(Integer.parseInt(split[0])+Integer.parseInt(split[1]));
-        } else { // TODO extend the programm here
+        } else if (query.contains("largest")) {
+            // 08de9f90: which of the following numbers is the largest: 44, 15
+            String one = query.substring(query.indexOf("largest") + "largest".length());
+            one = one.replace(":", "");
+            one = one.replace(" ", "");
+            String[] split = one.split(",");
+            return String.valueOf(Arrays.stream(split).mapToInt(Integer::parseInt).max().getAsInt());
+        } else {
+            // TODO extend the programm here
             return "";
         }
     }

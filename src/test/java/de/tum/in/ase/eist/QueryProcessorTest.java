@@ -38,4 +38,12 @@ class QueryProcessorTest {
 		}
 	}
 
+	@Test
+	void testPlus() {
+		String actual = queryProcessor.process("029e9080: what is 50 plus 13");
+		if (!actual.equals("63")) {
+			fail("No name recognised!");
+		}
+	}
+
 }
